@@ -24,3 +24,21 @@
   z-index: 100;
   pointer-events: none;
 }
+
+/* Responsive for mobile */
+.mobile-guide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-guide {
+    display: none;
+  }
+  .mobile-guide {
+    display: inline;
+  }
+  .guide {
+    font-size: 12px;
+    bottom: 20px;
+  }
+}

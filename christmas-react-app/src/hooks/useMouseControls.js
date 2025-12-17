@@ -103,9 +103,7 @@ const useMouseControls = (containerRef, stateRef, isReady) => {
     container.addEventListener('dblclick', handleDblClick)
     container.addEventListener('wheel', handleWheel, { passive: false })
     container.addEventListener('mousemove', handleMouseMove)
-    container.addEventListener('touchstart', handleTouchStart)
     container.addEventListener('touchmove', handleTouchMove, { passive: false })
-    container.addEventListener('touchend', handleTouchEnd)
 
     // Initial state
     setTimeout(() => {
@@ -119,10 +117,9 @@ const useMouseControls = (containerRef, stateRef, isReady) => {
       container.removeEventListener('dblclick', handleDblClick)
       container.removeEventListener('wheel', handleWheel)
       container.removeEventListener('mousemove', handleMouseMove)
-      container.removeEventListener('touchstart', handleTouchStart)
       container.removeEventListener('touchmove', handleTouchMove)
-      container.removeEventListener('touchend', handleTouchEnd)
       clearTimeout(mouseMoveTimeout)
+      clearTimeout(tapTimer)
     }
   }, [containerRef, stateRef, isReady])
 

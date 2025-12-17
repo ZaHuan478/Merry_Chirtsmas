@@ -15,6 +15,22 @@
   line-height: 1.6;
 }
 
+.mobile-guide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-guide {
+    display: none;
+  }
+  .mobile-guide {
+    display: inline;
+  }
+  .guide {
+    font-size: 12px;
+  }
+}
+
 .start-button {
   pointer-events: auto;
   cursor: pointer;
@@ -28,6 +44,13 @@
   box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
   animation: pulse 1.5s infinite;
   transition: transform 0.2s;
+}
+
+@media (max-width: 768px) {
+  .start-button {
+    padding: 12px 40px;
+    font-size: 14px;
+  }
 }
 
 .start-button:hover {
