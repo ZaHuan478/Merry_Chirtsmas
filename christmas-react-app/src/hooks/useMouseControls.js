@@ -15,12 +15,12 @@ const useMouseControls = (containerRef, stateRef, isReady) => {
     console.log('Mouse controls initialized!')
     const container = containerRef.current
 
-    // Mouse Click - Left: HEART
+    // Mouse Click - Left: EXPLODE (xem ảnh)
     const handleClick = (e) => {
       console.log('Click detected!')
-      if (e.button === 0) {
-        stateRef.current.current = 'HEART'
-        console.log('State changed to HEART')
+      if (e.button === 0 && stateRef.current.current !== 'EXPLODE') {
+        stateRef.current.current = 'EXPLODE'
+        console.log('State changed to EXPLODE')
       }
     }
 
@@ -39,7 +39,7 @@ const useMouseControls = (containerRef, stateRef, isReady) => {
     // Mouse Wheel - Rotate
     const handleWheel = (e) => {
       e.preventDefault()
-      if (stateRef.current.current !== 'TREE' && stateRef.current.current !== 'HEART') {
+      if (stateRef.current.current !== 'TREE') {
         stateRef.current.current = 'EXPLODE'
         mouseRotation.current += e.deltaY * 0.001
         stateRef.current.handX = (Math.sin(mouseRotation.current) + 1) / 2
@@ -50,7 +50,7 @@ const useMouseControls = (containerRef, stateRef, isReady) => {
     let mouseMoveTimeout
     const handleMouseMove = (e) => {
       clearTimeout(mouseMoveTimeout)
-      if (stateRef.current.current === 'TREE' || stateRef.current.current === 'HEART' || stateRef.current.current === 'PHOTO') return
+      if (stateRef.current.current === 'TREE' || stateRef.current.current === 'PHOTO') return
       
       stateRef.current.current = 'EXPLODE'
       const rect = container.getBoundingClientRect()
